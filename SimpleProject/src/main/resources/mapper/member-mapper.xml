@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<select id="login"
+			parameterType ="com.kh.spring.member.model.dto.MemberDTO"
+			resultType ="com.kh.spring.member.model.dto.MemberDTO"
+	>
+	select
+		 member_id 		memberId
+		,member_pw 		memberPw
+		,member_name 	memberName
+		,email			
+		,enroll_date	enrollDate
+	from
+		KH_MEMBER
+	where
+		member_id =#{memberId}
+	and
+		member_pw =#{memberPw}
+	
+	
+	</select>
+
+
+<!-- 
+	0.자기소개(기술 스택 뭐썻는지)
+	1.기능시현
+	2.가장 고생했던 문제 및 해결 절차
+	3.설계의 주안점
+
+ -->
+</mapper>

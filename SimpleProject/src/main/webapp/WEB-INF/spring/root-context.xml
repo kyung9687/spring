@@ -4,5 +4,30 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	
+		<!-- 
+		root-context.xml
+		서버 구공과 동시에 web.xml파일을 거쳐서 룅되는 문서==preloading
+		=? 서버가 구동되면서 세팅되어야 하는(bean등록) 내용들을 작성(db접속,트렌젝션처리,외부모들연결등등)
+	 -->
+	<bean class="org.apache.commons.dbcp.BasicDataSource"
+			id="dataSource"
+			destroy-method="close">
+			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="url" value="jdbc:oracle:thin:@112.221.156.34:12345:XE" />
+			<property name="username" value="KH06_KDY" />
+			<property name="password" value="KH1234" />
 		
+	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+		<property name="configLocation" value="classpath:mybatis.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>  
+	
 </beans>
