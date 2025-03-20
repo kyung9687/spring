@@ -16,9 +16,17 @@ public class exceptionHandlingController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("message", e.getMessage())
 		  .setViewName("include/error_page");
+		log.info("발생예외:{}", errorMsg,e);
 		
 		return mv;
 	}
+	
+	@ExceptionHandler(DuplicateIdException.class)
+	protected ModelAndView duplicateIdException(DuplicateIdException e) {
+		return createErrorResponse(e.getMessage(), e);
+	}
+	
+	
 	
 	@ExceptionHandler(PasswordMissMatchException.class)
 	protected ModelAndView passwordMissMatchException(PasswordMissMatchException e) {

@@ -130,4 +130,43 @@ public class MemberController {
 		return "main-page";
 	}
 	
+	
+	@GetMapping("my-page")
+	public String myPage() {
+		return "member/my-page";
+	}
+	
+	@PostMapping("update-member")
+	public void update(MemberDTO member ,HttpSession session) {
+		
+		
+		/*
+		 * 1)404 mapping값잘못적음
+		 * 
+		 * 2)405 앞단에서 post/get 으로 요청을 보내놓고 메서드와 맞지 않은 애노테이션을 사용했을때
+		 * 
+		 * 3) 필드에 값이 들어오지 않는 경우
+		 * 
+		 */
+		log.info("사용자가 입력한 값: {}", member);
+		/*
+		 * 이번에 실행할 sql문을 생각
+		 * updateans
+		 * id,pw,name,email,date
+		 * 2-1)매개변수 memberDTO타입의 memberId 필드값
+		 * 2-2)sessionscopㄷ에 loginMember 키값에 meberId필드값 넘겨주어야 함
+		 * 
+		 * 수행성공시
+		 * mypage로 이동 +갱신된 회원의 정보 출력
+		 * 
+		 * id를 가지고 다시 조회 => login 매서드 재활용
+		 * 
+		 * 수행실패시
+		 * message에 담아서 error_page로 포워딩
+		 * 예외발생 =>예외처리기로 위임
+		 * 
+		 */
+		
+		memberService.update(member, session);
+	}
 }

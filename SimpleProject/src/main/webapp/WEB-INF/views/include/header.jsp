@@ -76,7 +76,7 @@
 	           		<c:otherwise>
 	                <!-- 로그인 후 -->
 		                <lable>${ sessionScope.loginMember.memberName } 님 환영합니다</label> &nbsp;&nbsp;
-		                <a href="">마이페이지</a>&nbsp;
+		                <a href="my-page">마이페이지</a>&nbsp;
 		                <a href="logout">로그아웃</a>
               		</c:otherwise>
                 </c:choose>

@@ -1,9 +1,0 @@
-INDEX VERSION 1.131
-C:\workspace\kh\08_spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3387950781.index
-\SimpleProject\src\main\java
-C:\workspace\kh\08_spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2068419858.index
-\SimpleProject\src\main\java
-C:\workspace\kh\08_spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1347126295.index
-\SimpleProject\src\main\java
-C:\workspace\kh\08_spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3720432034.index
-\SimpleProject\src\main\java
