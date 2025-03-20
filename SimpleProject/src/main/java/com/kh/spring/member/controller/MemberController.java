@@ -1,6 +1,9 @@
 package com.kh.spring.member.controller;
 
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -111,9 +114,20 @@ public class MemberController {
 		return mv;
 	}
 	
-	
-	public void join(MemberDTO member) {
+	@GetMapping("signup-form")
+	public String signupForm() {
 		
+		
+		return "member/signup-form";
+	}
+	
+	@PostMapping("signup")
+	public String join(MemberDTO member, HttpServletRequest request) {
+		
+	
+		log.info("맴버 필드 찍어보기{}", member);
+		memberService.signUp(member);
+		return "main-page";
 	}
 	
 }

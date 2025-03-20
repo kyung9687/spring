@@ -8,13 +8,13 @@ public interface MemberService {
 	MemberDTO login(MemberDTO member);
 	
 	//회원가입
-	MemberDTO signUp(MemberDTO member);
+	void signUp(MemberDTO member);
 	
 	//회원정보수정
 	MemberDTO update(MemberDTO member);
 	
 	// 회원탈퇴
-		int delete(MemberDTO member);
+	int delete(MemberDTO member);
 
 	
 	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
 
@@ -18,18 +18,34 @@
 		KH_MEMBER
 	where
 		member_id =#{memberId}
-	and
-		member_pw =#{memberPw}
+
 	
 	
 	</select>
+	
+	<select id="checkId"
+			parameterType="string"
+			resultType ="_int">
+	select
+		count(*)
+	from
+		KH_MEMBER
+	Where
+		member_id =	#{memberId}	
+	
+	</select>
 
-
-<!-- 
-	0.자기소개(기술 스택 뭐썻는지)
-	1.기능시현
-	2.가장 고생했던 문제 및 해결 절차
-	3.설계의 주안점
-
- -->
+	<insert id="signUp"
+			parameterType="memberDTO">
+		insert into
+			KH_MEMBER
+		values
+			(
+			#{memberId}
+		, 	#{memberPw}
+		,	#{memberName}
+		,	#{email}
+		,	SYSDATE
+			)
+	</insert>
 </mapper>
