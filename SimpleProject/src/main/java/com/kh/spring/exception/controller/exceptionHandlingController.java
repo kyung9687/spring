@@ -21,6 +21,12 @@ public class exceptionHandlingController {
 		return mv;
 	}
 	
+	@ExceptionHandler(AuthenticationException.class)
+	protected ModelAndView authenticationException(AuthenticationException e) {
+		return createErrorResponse(e.getMessage(), e);
+	}
+	
+	
 	@ExceptionHandler(DuplicateIdException.class)
 	protected ModelAndView duplicateIdException(DuplicateIdException e) {
 		return createErrorResponse(e.getMessage(), e);

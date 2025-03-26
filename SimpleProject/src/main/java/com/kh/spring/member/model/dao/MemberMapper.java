@@ -3,38 +3,25 @@ package com.kh.spring.member.model.dao;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.kh.spring.member.model.dto.MemberDTO;
 
 @Mapper
 public interface MemberMapper {
 	
-	@Select("	select"
-			+ "		 member_id 		memberId"
-			+ "		,member_pw 		memberPw"
-			+ "		,member_name 	memberName"
-			+ "		,email			"
-			+ "		,enroll_date	enrollDate"
-			+ "	from"
-			+ "		KH_MEMBER"
-			+ "	where"
-			+ "		member_id = #{memberId}"
-			)
+	@Select("SELECT MEMBER_ID memberId, MEMBER_PW memberPw, MEMBER_NAME memberName, EMAIL, ENROLL_DATE enrollDate FROM KH_MEMBER WHERE MEMBER_ID = #{memberId}")
 	MemberDTO login(MemberDTO member);
 	
-	@Insert("insert into"
-			+ "	KH_MEMBER"
-			+ "	values"
-			+ "	("
-			+ "	  #{memberId}"
-			+ "	, #{memberPw}"
-			+ "	, #{memberName}"
-			+ "	, #{email}"
-			+ "	, SYSDATE"
-			+ "	)")
+	@Insert("INSERT INTO KH_MEMBER VALUES(#{memberId}, #{memberPw}, #{memberName}, #{email}, SYSDATE)")
 	int signUp(MemberDTO member);
 	
-	
+	@Update("UPDATE KH_MEMBER SET MEMBER_NAME = #{memberName}, EMAIL = #{email} WHERE MEMBER_ID = #{memberId}")
 	int update(MemberDTO member);
+	
 	int delete(MemberDTO member);
+	
+	@Select("SELECT MEMBER_ID FROM KH_MEMBER WHERE MEMBER_ID = #{memberId}")
+	String idCheck(String memberId);
+
 }
